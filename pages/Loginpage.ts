@@ -12,12 +12,12 @@ export class LoginPage
     
     async gotoLoginPage()
     {
-        await this.page.goto('url');
+        await this.page.goto('https://conserviceportaldev.azureedge.net/payment-portal/status');
     }
     async login_with_Validcrdentials():Promise<void>
     {    
-     await this.page.fill(this.usernameInput,'username');
-        await this.page.fill(this.passwordInput,'password');
+     await this.page.fill(this.usernameInput,'curtisjensen');
+        await this.page.fill(this.passwordInput,'Invalid Password');
         await this.page.click(this.loginButton);
         
     }
