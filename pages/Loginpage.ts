@@ -1,6 +1,8 @@
 import{Page,Locator,expect} from "@playwright/test";
 import { envSchema } from "../envSchema";
 
+require("dotenv").config();
+
 export class LoginPage
 { 
     //define element locators
