@@ -1,4 +1,8 @@
 import{Page,Locator,expect} from "@playwright/test";
+import { envSchema } from "../envSchema";
+
+require("dotenv").config();
+
 export class LoginPage
 { 
     //define element locators
@@ -12,15 +16,18 @@ export class LoginPage
     
     async gotoLoginPage()
     {
-        await this.page.goto('url');
+        await this.page.goto('https://conserviceportaldev.azureedge.net/payment-portal/status');
     }
+
     async login_with_Validcrdentials():Promise<void>
     {    
-     await this.page.fill(this.usernameInput,'username');
-        await this.page.fill(this.passwordInput,'password');
+        const validatedEnv = envSchema.parse(process.env);
+
+        await this.page.fill(this.usernameInput, validatedEnv.USERNAME);
+        await this.page.fill(this.passwordInput, validatedEnv.PASSWORD);
         await this.page.click(this.loginButton);
-        
     }
+
     async logout(){       
       await this.page.click('//button[@data-cy="avatar"]');
       await  this.page.getByText('Logout');
